@@ -35,7 +35,7 @@ class ProfileController extends Controller
             'profile' => 'required|mimes:png,jpg,jfif,jpg,jpeg',
             'slug' => 'required',
             'slugv2' => 'required',
-            'judul' => 'required'
+            'judul' => 'required',
         ]);
         if ($request->hasFile('profile')) {
             $data['profile'] = $request->profile->store('profiles', 'public');

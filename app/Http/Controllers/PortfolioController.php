@@ -9,6 +9,7 @@ use App\Models\Resume;
 use App\Models\Profile;
 use App\Models\Projects;
 use App\Models\Skil;
+use App\Models\Sosmed;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -17,8 +18,9 @@ class PortfolioController extends Controller
     {
         $data = Profile::first();
         $about = About::first();
+        $link = Sosmed::all();
         // dd($data);
-        return view('portfolio.pages.about.about', compact('data', 'about'));
+        return view('portfolio.pages.about.about', compact('data', 'about', 'link'));
     }
     public function resume()
     {
@@ -43,7 +45,8 @@ class PortfolioController extends Controller
             'email' => 'required|email',
             'isi' => 'required',
             'nomorHp' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'status' => 'required'
         ]);
         Contact::create($val);
         toastr()->success('Pesan anda berhasil terkirim');

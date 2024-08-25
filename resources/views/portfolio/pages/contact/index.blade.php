@@ -16,6 +16,7 @@
                     <div class="form-floating mb-3">
                         <input class="form-control" id="nama" type="text" placeholder="Enter your name..."
                             data-sb-validations="required" name="nama" />
+                        <input type="hidden" name="status" value="1">
                         <label for="name">Full name</label>
                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                     </div>

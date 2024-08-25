@@ -5,6 +5,7 @@
 @section('content')
     @include('portfolio.pages.header.header')
 
+
     <section class="about-section bg-light py-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,21 +20,31 @@
                         </div>
                         <div class="about-social-links">
                             <ul class="list-inline fs-3">
-                                <li class="list-inline-item">
-                                    <a href="#" class="social-link text-gradient" aria-label="Twitter">
-                                        <i class="bi bi-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="social-link text-gradient" aria-label="LinkedIn">
-                                        <i class="bi bi-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#" class="social-link text-gradient" aria-label="GitHub">
-                                        <i class="bi bi-github"></i>
-                                    </a>
-                                </li>
+                                @forelse ($link as $item)
+                                    @php
+                                        $icon = '';
+                                        if (strpos($item->link, 'youtube.com') !== false) {
+                                            $icon = 'bi bi-youtube';
+                                        } elseif (strpos($item->link, 'instagram.com') !== false) {
+                                            $icon = 'bi bi-instagram';
+                                        } elseif (strpos($item->link, 'twitter.com') !== false) {
+                                            $icon = 'bi bi-twitter';
+                                        } elseif (strpos($item->link, 'github.com') !== false) {
+                                            $icon = 'bi bi-github';
+                                        } elseif (strpos($item->link, 'facebook.com') !== false) {
+                                            $icon = 'bi bi-facebook';
+                                        } else {
+                                            $icon = 'bi bi-link';
+                                        }
+                                    @endphp
+                                    <li class="list-inline-item">
+                                        <a href="{{ $item->link }}" class="social-link text-gradient"
+                                            aria-label="Twitter">
+                                            <i class="{{ $icon }}"></i>
+                                        </a>
+                                    </li>
+                                @empty
+                                @endforelse
                             </ul>
                         </div>
                     </article>

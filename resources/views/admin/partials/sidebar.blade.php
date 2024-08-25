@@ -45,6 +45,11 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Projects</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ Request::routeIs('sosmed.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('sosmed.index') }}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Links</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
