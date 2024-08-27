@@ -105,7 +105,7 @@
                             response.get.forEach(function(
                                 item) { // Perbaiki 'foreach' menjadi 'forEach'
                                 html += `
-                        <a href="{{ url('message/${item.id}') }}" class="list-group-item">
+                        <a href="{{ url('admin/message/${item.id}') }}" class="list-group-item">
                             <div class="row g-0 align-items-center">
                                 <div class="col-10 ps-2">
                                     <div class="text-dark">${item.nama}</div>
