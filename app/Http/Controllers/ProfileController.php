@@ -11,6 +11,10 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function dashboard()
+    {
+        return view('admin.pages.dashboard.index');
+    }
     public function index()
     {
         $data = Profile::all();
