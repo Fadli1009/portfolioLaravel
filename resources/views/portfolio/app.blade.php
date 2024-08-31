@@ -26,6 +26,7 @@
         </section>
     </main>
     <!-- Footer-->
+    @include('portfolio.partials.footer')
 
     <!-- Bootstrap core JS-->
     @include('portfolio.partials.script')
