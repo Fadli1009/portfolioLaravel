@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resume;
+use App\Models\FileResume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
@@ -13,7 +15,8 @@ class ResumeController extends Controller
     public function index()
     {
         $data = Resume::all();
-        return view('admin.pages.resume.index', compact('data'));
+        $pdf = FileResume::first();
+        return view('admin.pages.resume.index', compact('data', 'pdf'));
     }
 
     /**
@@ -80,6 +83,58 @@ class ResumeController extends Controller
     {
         $resume->delete();
         toastr()->success('Data berhasil dihapus');
+        return redirect()->route('resume.index');
+    }
+
+    public function Createresume()
+    {
+        return view('admin.pages.resume.addResume');
+    }
+    public function Storeresume(Request $request)
+    {
+        // dd($request->all());
+        $val = $request->validate([
+            'resume' => 'required|mimetypes:application/pdf|max:10000'
+        ], [
+            'resume.mimetypes' => 'File harus berbentuk PDF',
+            'resume.max' => 'File PDF terlalu besar'
+        ]);
+        if ($request->hasFIle('resume')) {
+            $val['resume'] = $request->resume->store('resume', 'public');
+        }
+        toastr()->success('Resume berhasil diunggah');
+        FileResume::create($val);
+        return redirect()->route('resume.index');
+    }
+    public function Editresume($id)
+    {
+        $data = FileResume::find($id);
+        return view('admin.pages.resume.editResume', compact('data'));
+    }
+    public function updateResume(Request $request, $id)
+    {
+        $data = FileResume::find($id);
+        $val = $request->validate([
+            'resume' => 'required|mimetypes:application/pdf|max:10000'
+        ], [
+            'resume.mimetypes' => 'File harus berbentuk PDF',
+            'resume.max' => 'File PDF terlalu besar'
+        ]);
+        if ($request->hasFile('resume')) {
+            Storage::delete('public/resume' . $data->resume);
+            $val['resume'] = $request->resume->store('resume', 'public');
+        }
+        $data->update($val);
+        toastr()->success('Resume berhasil diubah');
+        return redirect()->route('resume.index');
+    }
+
+    public function deleteResume($id)
+    {
+        $data = FileResume::find($id);
+        Storage::delete('public/resume' . $data->resume);
+        $data->delete();
+        toastr()->success('Resume berhasil dihapus');
         return redirect()->route('resume.index');
     }
 }

@@ -81,7 +81,7 @@
                     }
                 })
             }
-            updateMessage(updateNotify, 3000)
+            updateMessage(updateNotify, 7000)
 
             // Daftar Pesan
 
@@ -91,11 +91,10 @@
                     url: "{{ route('message.count') }}",
                     success: function(response) {
                         var html = '';
-                        console.log(response.get); // Pastikan array 'get' diakses dengan benar
-
-                        if (response.get.length > 0) { // Memeriksa panjang array 'get'
+                        // console.log(response.get);
+                        if (response.get.length > 0) {
                             response.get.forEach(function(
-                                item) { // Perbaiki 'foreach' menjadi 'forEach'
+                                item) {
                                 html += `
                         <a href="{{ url('admin/message/${item.id}') }}" class="list-group-item">
                             <div class="row g-0 align-items-center">

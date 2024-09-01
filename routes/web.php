@@ -31,6 +31,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('languages', LanguagesController::class);
     Route::resource('projects', ProjectsController::class);
     Route::resource('sosmed', SosmedController::class);
+    Route::get('create/resume', [ResumeController::class, 'Createresume'])->name('create.resume');
+    Route::post('create/resume', [ResumeController::class, 'Storeresume'])->name('store.resume');
+    Route::get('edit/resume/{id}', [ResumeController::class, 'Editresume'])->name('edit.resume');
+    Route::put('edit/resume/{id}', [ResumeController::class, 'updateResume'])->name('update.resume');
+    Route::delete('edit/resume/{id}', [ResumeController::class, 'deleteResume'])->name('delete.resume');
 
     Route::get('message/{id}', [AdminController::class, 'inbox'])->name('admin.inbox');
     Route::get('/count-notify', [AdminController::class, 'count'])->name('message.count');

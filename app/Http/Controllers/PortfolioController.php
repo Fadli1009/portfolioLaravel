@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skil;
 use App\Models\About;
-use App\Models\Contact;
-use App\Models\Languages;
 use App\Models\Resume;
+use App\Models\Sosmed;
+use App\Models\Contact;
 use App\Models\Profile;
 use App\Models\Projects;
-use App\Models\Skil;
-use App\Models\Sosmed;
+use App\Models\Languages;
+use App\Models\FileResume;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -27,7 +28,8 @@ class PortfolioController extends Controller
         $resume = Resume::all();
         $skil = Skil::all();
         $lang = Languages::all();
-        return view('portfolio.pages.resume.index', compact('resume', 'skil', 'lang'));
+        $pdf = FileResume::first();
+        return view('portfolio.pages.resume.index', compact('resume', 'skil', 'lang', 'pdf'));
     }
     public function projects()
     {

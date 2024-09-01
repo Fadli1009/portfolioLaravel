@@ -27,7 +27,7 @@
             </li>
             <li class="sidebar-item {{ Request::routeIs('resume.*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('resume.index') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Resume</span>
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Experiences</span>
                 </a>
             </li>
             <li class="sidebar-item {{ Request::routeIs('about.*') ? 'active' : '' }}">

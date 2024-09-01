@@ -1,6 +1,6 @@
 @extends('portfolio.app')
 
-@section('title', $data->judul)
+@section('title', $data->judul ?? '')
 
 @section('content')
     @include('portfolio.pages.header.header')
@@ -12,11 +12,11 @@
                 <div class="col-lg-8">
                     <article class="about-content text-center">
                         <h1 class="about-title display-4 fw-bold mb-4">
-                            <span class="text-gradient">{{ $about->judul }}</span>
+                            <span class="text-gradient">{{ $about->judul ?? '' }}</span>
                         </h1>
-                        <p class="about-subtitle lead mb-4">{{ $about->subJudul }}</p>
+                        <p class="about-subtitle lead mb-4">{{ $about->subJudul ?? '' }}</p>
                         <div class="about-description mb-5">
-                            <p class="text-muted">{{ $about->isi }}</p>
+                            <p class="text-muted">{{ $about->isi ?? '' }}</p>
                         </div>
                         <div class="about-social-links">
                             <ul class="list-inline fs-3">
@@ -44,6 +44,7 @@
                                         </a>
                                     </li>
                                 @empty
+                                    <p>Tidak ada Social Media</p>
                                 @endforelse
                             </ul>
                         </div>

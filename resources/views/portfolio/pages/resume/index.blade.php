@@ -13,7 +13,8 @@
                 <section class="experience-section mb-5">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h2 class="text-primary fw-bold">Experience</h2>
-                        <a class="btn btn-primary" href="#!">
+                        <a class="btn btn-primary" href="{{ $pdf && $pdf->resume ? asset('storage/' . $pdf->resume) : '#' }}"
+                            target="_blank">
                             <i class="bi bi-download me-2"></i>Download Resume
                         </a>
                     </div>

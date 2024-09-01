@@ -1,10 +1,19 @@
 @extends('admin.base')
 @section('content')
     <div class="card-body">
-        <h5 class="card-title">My Resume </h5>
+        <h5 class="card-title">My Experiences</h5>
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('resume.create') }}" type="button" class="btn btn-primary">
-                Add Resume
+            @if (!App\Models\FileResume::exists())
+                <a href="{{ route('create.resume') }}" type="button" class="btn btn-primary">
+                    Add Resume
+                </a>
+            @else
+                <a href="{{ route('edit.resume', $pdf->id ?? '#') }}" type="button" class="btn btn-primary">
+                    Edit Resume
+                </a>
+            @endif
+            <a href="{{ route('resume.create') }}" type="button" class="btn btn-primary ms-2">
+                Add Experiences
             </a>
         </div>
         <div class="table-responsive">
