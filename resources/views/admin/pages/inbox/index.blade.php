@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('content')
-<div class="container mt-4">
+<div class="mt-4">
     <div class="card">
         <div class="card-header">
             <h4>Detail Pesan</h4>

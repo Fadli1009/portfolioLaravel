@@ -30,7 +30,8 @@
                                 </div>
                                 <div class="form-group">
                                     <input id="email" name="email" class="form-control _ge_de_ol" type="text"
-                                        placeholder="Enter Email" required="" aria-required="true">
+                                        placeholder="Enter Email" required="" aria-required="true"
+                                        value="{{ old('email') }}">
                                 </div>
 
                                 <div class="form-group">

@@ -24,7 +24,7 @@ class LoginController extends Controller
         }
 
         toastr()->error('Gagal Login');
-        return redirect()->route('login');
+        return redirect()->route('login')->withInput();
     }
     public function logout()
     {
