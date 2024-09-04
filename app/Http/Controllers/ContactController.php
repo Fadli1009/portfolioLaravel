@@ -12,7 +12,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $data = Contact::all();
+        $data = Contact::where('status', 1)->get();
         return view('admin.pages.contact.index', compact('data'));
     }
 
@@ -61,7 +61,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        $contact->delete();
+        $contact->update(['status' => 0]);
         toastr()->success('Inbox Berhasil Dihapus');
         return redirect()->route('contact.index');
     }

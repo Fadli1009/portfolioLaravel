@@ -1,6 +1,6 @@
 @extends('admin.base')
 @section('content')
-@extends('admin.base')
+
 
 @section('content')
 <div class="mt-4">

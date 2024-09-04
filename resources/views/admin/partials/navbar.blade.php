@@ -24,7 +24,7 @@
 
                     </div>
                     <div class="dropdown-menu-footer">
-                        <a href="#" class="text-muted">Show all messages</a>
+                        <a href="{{ route('contact.index') }}" class="text-muted">Show all messages</a>
                     </div>
                 </div>
             </li>
