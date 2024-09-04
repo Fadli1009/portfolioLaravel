@@ -47,8 +47,8 @@
     </div>
 </nav>
 @section('scripts')
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
             function updateNotify() {
                 $.ajax({
                     type: "GET",
@@ -124,5 +124,5 @@
             setInterval(inbox, 3000);
 
         })
-    </script>
+</script>
 @endsection

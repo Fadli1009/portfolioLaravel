@@ -12,7 +12,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $data = Contact::all();
+        return view('admin.pages.contact.index', compact('data'));
     }
 
     /**
@@ -36,7 +37,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        return view('admin.pages.contact.show', compact('contact'));
     }
 
     /**
@@ -60,6 +61,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        toastr()->success('Inbox Berhasil Dihapus');
+        return redirect()->route('contact.index');
     }
 }

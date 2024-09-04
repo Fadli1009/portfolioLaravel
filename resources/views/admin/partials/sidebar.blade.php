@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="{{ route('dashboard') }}">
             <span class="align-middle">Fadli Mimin</span>
         </a>
 
@@ -9,8 +9,8 @@
                 Pages
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="dashboard">
+            <li class="sidebar-item {{ Request::routeIs('dashboard')?'active':'' }}">
+                <a class="sidebar-link" href="{{ route('dashboard') }}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
@@ -48,6 +48,11 @@
             <li class="sidebar-item {{ Request::routeIs('sosmed.*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('sosmed.index') }}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Links</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ Request::routeIs('contact.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('contact.index') }}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Contact</span>
                 </a>
             </li>
         </ul>

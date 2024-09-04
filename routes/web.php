@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SkilController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('skils', SkilController::class);
     Route::resource('resume', ResumeController::class);
     Route::resource('about', AboutController::class);
+    Route::resource('contact', ContactController::class);
     Route::resource('languages', LanguagesController::class);
     Route::resource('projects', ProjectsController::class);
     Route::resource('sosmed', SosmedController::class);
