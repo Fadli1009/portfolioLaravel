@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -55,24 +56,42 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Projects $projects)
+    public function edit($id)
     {
-        //
+        $projects = Projects::find($id);
+        return view('admin.pages.projects.edit', compact('projects'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Projects $projects)
+    public function update(Request $request, $id)
     {
-        //
+        $projects = Projects::find($id);
+        $val = $request->validate([
+            'judul' => 'required',
+            'gambar' => 'nullable|mimes:png,jpg,jpeg',
+            'deskripsi' => 'required'
+        ]);
+        if ($request->hasFile('gambar')) {
+            if ($request->gambar) {
+                Storage::delete('public/' . $projects->gambar);
+            }
+            $val['gambar'] = $request->gambar->store('gambar', 'public');
+        }
+        $projects->update($val);
+        toastr()->success('Berhasil mengubah data');
+        return redirect()->route('projects.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Projects $projects)
+    public function destroy($id)
     {
-        //
+        $projects = Projects::find($id);
+        $projects->delete();
+        toastr()->success('Berhasil menghapus data');
+        return redirect()->route('projects.index');
     }
 }
